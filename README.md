@@ -30,6 +30,30 @@ uv run python src/japanese_learning.py search ねこ
 uv run python src/japanese_learning.py search cat
 ```
 
+## Local web wordbook
+
+Start the local browser app after importing the dictionary:
+
+```sh
+uv run python src/web_app.py
+```
+
+Then open <http://127.0.0.1:8000>. Browse the full dictionary in batches of 60 entries as you scroll, search by Japanese text, reading, or English gloss, save entries, filter by JMdict part-of-speech tags, and keep private notes. The service binds only to the local machine. Personal records are stored in `data/private/study.sqlite3`, separate from the reference dictionary. The current JMdict snapshot has no JLPT level field, so the level selector is present but levels remain unclassified until a separately licensed community mapping is reviewed and added.
+
+## Sentence and grammar materials
+
+Download and import the selected corpora into a local database:
+
+```sh
+uv run python src/import_learning_materials.py
+```
+
+The local web app then adds **문장·문법 자료** and **저장한 학습 자료** under My Space. It includes Japanese-English pairs from Tatoeba, all four KFTT splits, public BSD business-scene dialogues, and OpenJLPT grammar points and example sentences. The importer checks pinned source-file SHA-256 hashes, keeps records separated by source, and retains sentence IDs, author names where provided, source links, and license labels. Corpus databases are local-only and ignored by Git.
+
+Tatoeba is community-contributed and may include awkward or incorrect translations; review examples before treating them as authoritative. KFTT is Wikipedia Kyoto article material and BSD is scenario-written business dialogue, so their styles differ. OpenJLPT's N5–N1 levels are community estimates rather than official JLPT lists. BSD uses CC BY-NC-SA; the other selected corpora have their own attribution/share-alike terms. Keep the source label and credit visible when viewing material, and do not redistribute the private combined database. JParaCrawl and subtitle corpora are excluded because their terms or provenance are not suitable for this personal learning database.
+
+For OpenJLPT attribution, the app includes data from OpenJLPT (CC BY-SA 4.0), which uses JMdict and KANJIDIC2 (EDRDG), Jonathan Waller's JLPT lists, and Tatoeba.
+
 ## Data and privacy
 
 - `data/downloads/` contains the downloaded archive.
