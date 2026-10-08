@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Local data: downloaded dictionary, generated database, and personal study data
+data/downloads/
+data/reference/
+data/private/
+*.db
+*.sqlite
+*.sqlite3
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Python and uv
+__pycache__/
+*.py[cod]
+.venv/
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/

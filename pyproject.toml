@@ -1,0 +1,24 @@
+[project]
+name = "japanese-learning"
+version = "0.1.0"
+description = "A small local-first Japanese vocabulary learning project"
+readme = "README.md"
+requires-python = "==3.13.*"
+dependencies = []
+
+[dependency-groups]
+dev = ["ruff"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
