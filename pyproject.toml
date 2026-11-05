@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "A small local-first Japanese vocabulary learning project"
 readme = "README.md"
 requires-python = "==3.13.*"
-dependencies = []
+dependencies = [
+    "janome>=0.5.0",
+]
 
 [dependency-groups]
 dev = ["ruff"]

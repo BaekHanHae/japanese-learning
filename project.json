@@ -1,0 +1,12 @@
+{
+  "name": "Japanese Learning",
+  "description": "일본어 단어 사전 + 웹 워드북 + 간격 반복 학습",
+  "tech": ["Python 3.13", "uv", "SQLite", "Janome"],
+  "goals": [
+    { "name": "JMdict 단어 사전 import 및 검색", "status": "done", "progress": 100, "order": 1, "updated": "2026-11-05", "note": "import_dictionary, search 구현 완료" },
+    { "name": "웹 워드북 및 저장 기능", "status": "done", "progress": 100, "order": 2, "updated": "2026-11-05", "note": "web_app.py 구현 완료" },
+    { "name": "간격 반복 학습 (학습하기 모드)", "status": "done", "progress": 100, "order": 3, "updated": "2026-11-05", "note": "study_logic.py 구현 완료" },
+    { "name": "문장·문법 자료 import 및 검색", "status": "done", "progress": 100, "order": 4, "updated": "2026-11-05", "note": "import_learning_materials.py, materials_search.py 구현 완료" },
+    { "name": "JLPT 어휘 및 피치 악센트 연동", "status": "done", "progress": 100, "order": 5, "updated": "2026-11-05", "note": "import_jlpt_vocab.py, import_pitch_accents.py 구현 완료" }
+  ]
+}

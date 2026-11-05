@@ -8,12 +8,15 @@ import hashlib
 import io
 import json
 import sqlite3
+import sys
 import tarfile
 import urllib.request
 import zipfile
 from collections.abc import Iterable
 from datetime import UTC, datetime
 from pathlib import Path
+
+from materials_search import ensure_index
 
 ROOT = Path(__file__).resolve().parents[1]
 DOWNLOADS = ROOT / "data" / "downloads" / "learning"
@@ -422,6 +425,14 @@ def openjlpt_records(
 
 
 def main() -> None:
+    if "--rebuild-search-index" in sys.argv[1:]:
+        if not DATABASE.exists():
+            raise SystemExit(f"{DATABASE} 가 없습니다. 먼저 자료를 임포트하세요.")
+        with sqlite3.connect(DATABASE) as connection:
+            print("trigram 검색 인덱스를 만드는 중입니다 ...", flush=True)
+            ensure_index(connection)
+        print(f"검색 인덱스 생성 완료: {DATABASE}")
+        return
     checksums = download_sources()
     DATABASE.parent.mkdir(parents=True, exist_ok=True)
     temporary = DATABASE.with_suffix(".tmp")
@@ -494,6 +505,8 @@ def main() -> None:
                         now,
                     ),
                 )
+            print("trigram 검색 인덱스를 만드는 중입니다 ...", flush=True)
+            ensure_index(connection)
             connection.commit()
         temporary.replace(DATABASE)
     except Exception:
